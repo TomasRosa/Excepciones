@@ -1,4 +1,4 @@
-public class HashMapVacio extends Exception
+public class HashMapVacio extends RuntimeException
 {
     public HashMapVacio ()
     {

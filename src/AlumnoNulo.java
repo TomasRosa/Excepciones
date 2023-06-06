@@ -1,4 +1,4 @@
-public class AlumnoNulo extends Exception
+public class AlumnoNulo extends RuntimeException
 {
     public AlumnoNulo()
     {

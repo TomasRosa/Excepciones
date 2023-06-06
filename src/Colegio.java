@@ -18,18 +18,19 @@ public class Colegio
             System.out.println("Clave: " + entry.getKey() + "Valor: " + entry.getValue());
         }
     }
-    public void agregarAlumno2 (Alumno alumno) throws AlumnoNulo
+    public void agregarAlumno2 (Alumno alumno) throws NullPointerException
     {
-       if(alumno != null)
-       {
-           this.hashmapColegio.put(alumno.getNombre(),alumno.getNacionalidad());
-       }
-       else
-       {
-           throw new AlumnoNulo();
-       }
+        try
+        {
+            this.hashmapColegio.put(alumno.getNombre(),alumno.getNacionalidad());
+        }
+        catch (NullPointerException e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
-    public void verNacionalidad (String nacionalidad) throws NacionalidadNoEncontrada {
+    public void verNacionalidad (String nacionalidad) throws NacionalidadNoEncontrada
+    {
         System.out.println("Nacionalidad: " + nacionalidad);
         int cantidad = cantidadPorNacionalidad(nacionalidad);
         if(cantidad > 0)
@@ -54,7 +55,7 @@ public class Colegio
         }
         return cantidad;
     }
-    public void cuantos ()
+    public void cuantos () ///
     {
         HashSet<String> nacionalidades = new HashSet<String>();
 
@@ -75,10 +76,11 @@ public class Colegio
     public void borrar (Alumno alumno) throws AlumnoNulo
     {
         alumno = buscarAlumno(alumno);
+        System.out.println(alumno);
 
         if(alumno != null)
         {
-            this.hashmapColegio.remove(alumno.getNombre(),alumno.getNacionalidad());
+            this.hashmapColegio.remove(alumno.getNombre());
         }
         else
         {
@@ -94,6 +96,8 @@ public class Colegio
         {
             if(entry.getKey().equalsIgnoreCase(alumno.getNombre()))
             {
+                Alumno aux = new Alumno(entry.getKey(), entry.getValue());
+                System.out.println(aux);
                 aBuscar = new Alumno(entry.getKey(), entry.getValue());
             }
         }

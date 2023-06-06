@@ -1,4 +1,4 @@
-public class NacionalidadNoEncontrada extends Exception
+public class NacionalidadNoEncontrada extends RuntimeException
 {
     public NacionalidadNoEncontrada ()
     {
